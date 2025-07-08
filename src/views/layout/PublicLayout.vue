@@ -1,6 +1,10 @@
+<script setup lang="ts">
+import NavbarSection from '@/components/nav/NavbarSection.vue';
+</script>
+
 <template>
-  <div>
-    <header class="fixed top-0">nav</header>
+  <div class="bg-[#f0e7de]">
+    <NavbarSection />
     <RouterView />
   </div>
 </template>

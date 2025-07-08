@@ -1,1 +1,22 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+/* @import url('https://fonts.googleapis.com/css2?family=Knewave&family=Kosugi+Maru&display=swap'); */
+
+@layer base {
+  button {
+    cursor: pointer;
+  }
+}
+
+@theme {
+  --color-primary-500: #7d97b8;
+}
+.kosugi-maru-regular {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.knewave-regular {
+  font-family: 'Knewave', system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
