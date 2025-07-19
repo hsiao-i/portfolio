@@ -16,7 +16,7 @@ const nav = [
 </script>
 <template>
   <header class="fixed top-0 z-20 px-4 py-3">
-    <nav class="flex rounded-full bg-gray-200 px-4 py-3 text-gray-700/50">
+    <nav class="flex rounded-full bg-gray-300/90 px-4 py-3 text-gray-500">
       <ul class="flex gap-4">
         <li v-for="item in nav" :key="item.title" class="px-2 text-center">
           <a href="" class="group relative px-1 py-3 font-bold">

@@ -7,7 +7,8 @@
 }
 
 @theme {
-  --color-primary-500: #7d97b8;
+  --color-primary-400: #7d97b8;
+  --color-primary-500: #617fa5;
 }
 .kosugi-maru-regular {
   font-family: 'Kosugi Maru', sans-serif;

@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 py-20 text-xl text-gray-700">
+  <div class="container mx-auto px-4 py-20 text-xl">
     <div class="border-primary-500 border-x border-t px-4">
       <div class="border-primary-500 text-primary-500 px-4 py-3 font-mono text-8xl">Skill</div>
       <!-- <div class="border-primary-500 col-span-2"></div> -->

@@ -42,7 +42,7 @@ const assistantResume = [
 ];
 </script>
 <template>
-  <div class="container mx-auto flex justify-center gap-18 px-4 py-20 text-gray-700">
+  <div class="container mx-auto flex justify-center gap-18 px-4 py-20">
     <h2
       class="lh-base text-primary-500 write-sideway-lr transform font-mono text-base/40 text-[11rem]"
     >

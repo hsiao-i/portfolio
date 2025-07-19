@@ -5,6 +5,8 @@ import NavbarSection from '@/components/nav/NavbarSection.vue';
 <template>
   <div class="bg-[#f0e7de]">
     <NavbarSection />
-    <RouterView />
+    <div class="kosugi-maru-regular text-gray-700">
+      <RouterView />
+    </div>
   </div>
 </template>
