@@ -2,14 +2,16 @@
 import type { TechNote } from '@/types/projectDetail/projectDetail';
 import axios from 'axios';
 import { onMounted, onUnmounted, ref } from 'vue';
+import { useJsonData } from '@/composables/useJsonData';
 
+const { getJsonDataPath } = useJsonData();
 const noteList = ref<TechNote[]>([]);
 const isMdAndUp = ref(false);
 
 const getNoteList = async () => {
   try {
     const res = await axios({
-      url: '/jsonData/projectDemo/techNote.json',
+      url: getJsonDataPath('projectDemo/techNote.json'),
       method: 'get',
     });
     noteList.value = res.data;

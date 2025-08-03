@@ -3,7 +3,9 @@ import type { ProjectDetail } from '@/types/projectDetail/projectDetail';
 import axios from 'axios';
 import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { useJsonData } from '@/composables/useJsonData';
 
+const { getJsonDataPath } = useJsonData();
 const route = useRoute();
 
 const projectDetail = ref<ProjectDetail[]>([]);
@@ -11,7 +13,7 @@ const projectDetail = ref<ProjectDetail[]>([]);
 const getProjectDetail = async () => {
   try {
     const res = await axios({
-      url: '/jsonData/projectDemo/projectIntroduce.json',
+      url: getJsonDataPath('projectDemo/projectIntroduce.json'),
       method: 'get',
     });
     projectDetail.value = res.data;
