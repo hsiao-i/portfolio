@@ -1,0 +1,98 @@
+[
+  {
+    "id": "1",
+    "title": "視覺化資訊",
+    "imageFileName": "incineration",
+    "content": [
+      {
+        "subtitle": "焚化廠昨日貯坑存量",
+        "description": "使用 Vue.js，以不同顏色顯示全臺各焚化廠昨日貯坑存放的情況，一眼看掌握全臺情況，並搭配地圖展示。",
+        "imageFileName": "incineration",
+        "image": "yesterdayStorage-1.jpg",
+        "video": ""
+      },
+      {
+        "subtitle": "焚化廠灰渣產生量與流向",
+        "description": "記錄各焚化廠焚燒後產生的底渣與飛灰是送至哪些地方再利用與掩埋。",
+        "imageFileName": "incineration",
+        "image": "ash.png",
+        "video": ""
+      },
+      {
+        "subtitle": "焚化廠昨日營運概況",
+        "description": "記錄焚化廠內昨日各爐別的運作情形，查看各爐別是否因特殊原因、異常狀況停止運作。",
+        "imageFileName": "incineration",
+        "image": "yesterdayOperation-1.jpg",
+        "video": ""
+      },
+      {
+        "subtitle": "環境稽查與裁處情形",
+        "description": "使用 Vue.js 與 TypeScrip，顯示全臺灣稽查和裁處的狀況，並搭配地圖增加畫面豐富度。",
+        "imageFileName": "incineration",
+        "image": "ddp.png",
+        "video": ""
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "會員系統、權限控制",
+    "content": [
+      {
+        "subtitle": "登入頁面",
+        "description": "使用 Vue.js，登入後使用的各功能皆需將 JWT Token 送至後端進行權限驗證。",
+        "imageFileName": "envImpact",
+        "image": "login.jpg",
+        "video": ""
+      },
+      {
+        "subtitle": "註冊頁面",
+        "description": "表單使用 Vee Validate 進行前端輸入的驗證，避免不必要的資料送到後端耗費請求資源。",
+        "imageFileName": "envImpact",
+        "image": "register.jpg",
+        "video": ""
+      },
+      {
+        "subtitle": "首頁",
+        "description": "畫面皆會藉由後端回傳的權限資訊進行前端顯示內容的控制，以及路由是否能進入的控管。",
+        "imageFileName": "envImpact",
+        "image": "home-1.jpg",
+        "video": ""
+      },
+      {
+        "subtitle": "查詢案件",
+        "description": "",
+        "imageFileName": "envImpact",
+        "image": "caseSearch-1.jpg",
+        "video": ""
+      },
+      {
+        "subtitle": "新增案件",
+        "description": "",
+        "imageFileName": "envImpact",
+        "image": "addCase.jpg",
+        "video": ""
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "效能調校、網站改版",
+    "content": [
+      {
+        "subtitle": "新版網站",
+        "description": "進行版面及色系調整，另畫面現代化。並預計申請無障礙 AA 標章、調整無障礙相關問題，確認鍵盤操作順暢、報讀軟體可閱讀各下拉選單、輸入框 label 等等。",
+        "imageFileName": "incinerationPublic",
+        "image": "",
+        "video": "swimsPublicNewVersion.mp4"
+      },
+      {
+        "subtitle": "網站改版前",
+        "description": "進行效能調校，令桌機版效能分數提升 40 分。主要針對版面配置位移、banner 圖片載入、圖片大小與格式問題、啟用打包後的 tree shaking 功能等等方向進行優化。",
+        "imageFileName": "incinerationPublic",
+        "image": "",
+        "video": "swimsPublicOldVersion.mp4"
+      }
+    ]
+  }
+]
