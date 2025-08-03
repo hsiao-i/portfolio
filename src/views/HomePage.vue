@@ -85,10 +85,10 @@ onUnmounted(() => {
           <span class="block text-right">Developer</span>
         </p>
       </h1>
-      <div
+      <!-- <div
         ref="portrait"
         class="absolute h-full w-2/3 bg-[url(@/assets/images/home/portrait.png)] bg-cover bg-center brightness-10"
-      ></div>
+      ></div> -->
     </section>
     <section ref="horizontal" id="horizontal" class="horizontal block flex-nowrap md:flex">
       <div id="resume" class="content mx-auto h-auto w-screen flex-shrink-0 px-4 md:h-screen">
