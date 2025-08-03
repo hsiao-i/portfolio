@@ -1,4 +1,14 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
+import { gsap } from 'gsap';
+import VerticalEngText from '../uiComponents/VerticalEngText.vue';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+// 啟用插件
+gsap.registerPlugin(ScrollTrigger);
+
+const containerRef = ref<HTMLElement | null>(null);
+
 const eriResume = [
   {
     id: 1,
@@ -30,6 +40,8 @@ const eriResume = [
   },
 ];
 
+const ctx = ref<gsap.Context | null>(null);
+
 const assistantResume = [
   {
     id: 1,
@@ -40,23 +52,73 @@ const assistantResume = [
     description: '控管一年期專案進度，規劃活動時程與經費配置，確保專案如期執行。',
   },
 ];
+
+// 初始化 ScrollTrigger 動畫
+const initScrollAnimations = () => {
+  // 動畫配置數組，避免重複代碼
+  const animationConfigs = [
+    {
+      selector: '.gsap-resume',
+      animation: { opacity: 0, x: -100, duration: 1, ease: 'power2.out', delay: 0.5 },
+    },
+    {
+      selector: '.gsap-hello-text',
+      animation: { y: -50, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.5 },
+    },
+    {
+      selector: '.gsap-frontend',
+      animation: { x: -50, opacity: 0, duration: 0.8, ease: 'power2.out', delay: 0.7 },
+    },
+    {
+      selector: '.gsap-assistant',
+      animation: { y: 30, opacity: 0, duration: 0.8, ease: 'power2.out', delay: 0.75 },
+    },
+  ];
+
+  // 統一的 ScrollTrigger 設定
+  const defaultScrollTrigger = {
+    start: 'top 80%',
+    toggleActions: 'play none none reverse',
+  };
+
+  ctx.value = gsap.context(() => {
+    // 批量創建動畫
+    animationConfigs.forEach(({ selector, animation }) => {
+      gsap.from(selector, {
+        scrollTrigger: {
+          trigger: selector,
+          ...defaultScrollTrigger,
+        },
+        ...animation,
+      });
+    });
+  });
+};
+
+// GSAP 動畫設置
+onMounted(() => {
+  initScrollAnimations();
+  console.log('🔢 創建後 ScrollTrigger 數量:', ScrollTrigger.getAll().length);
+});
+
+onUnmounted(() => {
+  if (ctx.value) {
+    ctx.value.revert(); // 清除 GSAP 動畫上下文
+  }
+});
 </script>
 <template>
-  <div class="container mx-auto flex justify-center gap-18 px-4 py-20">
-    <h2
-      class="lh-base text-primary-500 write-sideway-lr transform font-mono text-base/40 text-[11rem]"
-    >
-      RESUME
-    </h2>
+  <div class="container mx-auto flex justify-center gap-18 px-4 py-20" ref="containerRef">
+    <VerticalEngText class="gsap-resume hidden text-[10.5rem] lg:block">RESUME</VerticalEngText>
     <div>
-      <h2 class="knewave-regular text-primary-500 mb-16 text-4xl">
+      <h2 class="knewave-regular gsap-hello-text text-primary-400 mb-16 text-2xl sm:text-4xl">
         Hello, I'm Eva Lo.
         <br />
         I'm a Frontend Developer.
       </h2>
 
       <div>
-        <div>
+        <div class="gsap-frontend">
           <div class="flex justify-between">
             <h3 class="mb-4 text-xl font-bold text-amber-800">前端工程師</h3>
             <p class="text-amber-900">2022.7 - 至今</p>
@@ -69,8 +131,9 @@ const assistantResume = [
         </div>
 
         <hr class="my-10" />
-
-        <div>
+        <!-- ref="researchAssistantRef" -->
+        <!-- class="gsap-assistant" -->
+        <div class="gsap-assistant">
           <div class="flex justify-between">
             <h3 class="mb-4 text-xl font-bold text-amber-800">研究助理</h3>
             <p class="text-amber-900">2019.7 － 2022.7</p>
@@ -85,8 +148,3 @@ const assistantResume = [
     </div>
   </div>
 </template>
-<style scoped>
-.write-sideway-lr {
-  writing-mode: sideways-lr;
-}
-</style>
