@@ -1,1 +1,31 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@layer base {
+  button {
+    cursor: pointer;
+  }
+}
+
+@theme {
+  --color-primary-400: #7d97b8;
+  --color-primary-500: #617fa5;
+}
+@utility writing-vertical-rl {
+  writing-mode: vertical-rl;
+}
+@utility text-upright {
+  text-orientation: upright;
+}
+
+@layer components {
+}
+.kosugi-maru-regular {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.knewave-regular {
+  font-family: 'Knewave', system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
