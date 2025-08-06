@@ -98,7 +98,6 @@ const initScrollAnimations = () => {
 // GSAP 動畫設置
 onMounted(() => {
   initScrollAnimations();
-  console.log('🔢 創建後 ScrollTrigger 數量:', ScrollTrigger.getAll().length);
 });
 
 onUnmounted(() => {
@@ -112,9 +111,9 @@ onUnmounted(() => {
     <VerticalEngText class="gsap-resume hidden text-[10.5rem] lg:block">RESUME</VerticalEngText>
     <div>
       <h2 class="knewave-regular gsap-hello-text text-primary-400 mb-16 text-2xl sm:text-4xl">
-        Hello, I'm Eva Lo.
+        Hello, I'm Eva.
         <br />
-        I'm a Frontend Developer.
+        I have three years of experience as a Frontend Developer.
       </h2>
 
       <div>
