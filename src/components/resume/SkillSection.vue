@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="border-primary-500 grid grid-cols-1 border md:grid-cols-2">
-      <div class="h-full border-r">
+      <div class="h-full border-r-0 md:border-r">
         <p class="border-primary-500 border-b p-4 pb-3 text-xl tracking-wide md:text-2xl">
           網頁前端開發
         </p>
@@ -25,7 +25,7 @@
       </div>
       <div class="flex flex-col items-center justify-center">
         <div class="w-3/4 py-8">
-          <p class="mb-8 text-lg md:text-xl">
+          <p class="mb-8 text-lg lg:text-xl">
             獨立開發小型後臺系統，從 0 到 1 建立完整專案。涵蓋需求釐清、API
             規格設計、前端架構規劃、共用元件開發、邏輯模組抽離，以及技術文件撰寫，皆由我全權負責，完整掌握開發流程與系統架構。
           </p>

@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import yesterdayOperationImg from '@/assets/images/profolio/incineration/yesterdayOperation-1.jpg';
 import envImpactImg from '@/assets/images/profolio/envImpact/login.jpg';
 import incinerationPublicImg from '@/assets/images/profolio/incinerationPublic/incinerationPublicHome.png';
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
-
-const props = defineProps<{
-  parentGsap?: gsap.core.Tween | null;
-}>();
 
 // 註冊 ScrollTrigger 插件
 gsap.registerPlugin(ScrollTrigger);
@@ -59,24 +54,23 @@ const initProjectAnimations = () => {
     gsap.from('.gsap-project', {
       scrollTrigger: {
         trigger: '.gsap-project',
-        containerAnimation: props.parentGsap ?? undefined,
-        start: 'left right',
-        toggleActions: 'restart none none reverse',
+        start: 'top 90%', // 當元素頂部距離視窗底部 90% 時觸發
+        end: 'bottom 40%', // 當元素底部距離視窗頂部 40% 時結束
+        toggleActions: 'play none none reverse',
         scrub: 1,
       },
       opacity: 0,
-      x: -40,
+      y: -40,
       duration: 1.2,
       ease: 'power3.out',
       delay: (i) => i * 0.2,
-      stagger: 0.3, // stagger 讓每個項目依序出現
+      stagger: 0.2, // stagger 讓每個項目依序出現
     });
   });
 };
 
 onMounted(() => {
   initProjectAnimations();
-  console.log('🔢 創建後 ScrollTrigger 數量:', ScrollTrigger.getAll().length);
 });
 
 onUnmounted(() => {

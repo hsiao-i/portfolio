@@ -3,10 +3,16 @@ import type { TechNote } from '@/types/projectDetail/projectDetail';
 import axios from 'axios';
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useJsonData } from '@/composables/useJsonData';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// 註冊 GSAP 插件
+gsap.registerPlugin(ScrollTrigger);
 
 const { getJsonDataPath } = useJsonData();
 const noteList = ref<TechNote[]>([]);
 const isMdAndUp = ref(false);
+const ctx = ref<gsap.Context | null>(null);
 
 const getNoteList = async () => {
   try {
@@ -25,6 +31,28 @@ const checkScreenSize = () => {
   isMdAndUp.value = window.innerWidth >= 768;
 };
 
+// 初始化動畫
+const initAnimations = () => {
+  ctx.value = gsap.context(() => {
+    // 為每個技術筆記項目創建動畫
+    gsap.utils.toArray<HTMLElement>('.gsap-tech-note').forEach((element, index) => {
+      gsap.from(element, {
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 90%',
+          end: 'bottom 10%',
+          toggleActions: 'play none none reverse',
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        ease: 'power2.out',
+        delay: index * 0.15, // 每個項目延遲 0.15 秒，讓它們依序出現
+      });
+    });
+  });
+};
+
 onMounted(async () => {
   await getNoteList();
 
@@ -33,11 +61,21 @@ onMounted(async () => {
 
   // 監聽螢幕尺寸變化
   window.addEventListener('resize', checkScreenSize);
+
+  // 等待 DOM 更新後初始化動畫
+  setTimeout(() => {
+    initAnimations();
+  }, 100);
 });
 
 onUnmounted(() => {
   // 清除事件監聽器
   window.removeEventListener('resize', checkScreenSize);
+
+  // 清除 GSAP 動畫上下文
+  if (ctx.value) {
+    ctx.value.revert();
+  }
 });
 
 const listStyle = (index: number) => {
@@ -58,7 +96,7 @@ const listStyle = (index: number) => {
       <li
         v-for="(article, index) in noteList"
         :key="article.id"
-        class="border-b border-gray-400 py-4"
+        class="gsap-tech-note border-b border-gray-400 py-4"
         :style="listStyle(index)"
       >
         <a :href="article.url" target="_blank" class="block rounded-lg p-4 hover:bg-gray-50/50">
